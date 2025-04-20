@@ -17,6 +17,7 @@ export function isAdmin(req: any, res: any, next: NextFunction) {
 
     const token = authHeader.split(" ")[1];
 
+    // Verifica se o token foi gerado pelo keycloak
     const decoded = jwt.verify(token, publicKey, {
       algorithms: ["RS256"],
     }) as any;

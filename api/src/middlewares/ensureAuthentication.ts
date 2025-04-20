@@ -23,7 +23,7 @@ export async function keycloakAuthMiddleware(
   const token = authHeader.split(" ")[1];
 
   try {
-    // Verifica o token
+    // Verifica se o token foi gerado pelo keycloak
     const payload = jwt.verify(token, publicKey, { algorithms: ["RS256"] });
 
     req.user = payload;
