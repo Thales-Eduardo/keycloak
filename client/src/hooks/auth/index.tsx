@@ -39,6 +39,9 @@ export const AuthProvider = ({ children }: any) => {
     const initKeycloak = async () => {
       try {
         const authenticated = await keycloak.init({
+          //Com o "login-required", o Keycloak protege todas as rotas/pages, dessa forma somente usuários com token têm acesso.
+          //Com o "check-sso", todas as rotas/pages ficam desprotegidas, então você vai criar um método para definir quais rotas/pages que serão privadas ou não.
+          //Se usar "check-sso", você terá que criar as páginas de login/registro.
           onLoad: "login-required",
           checkLoginIframe: false,
         });
